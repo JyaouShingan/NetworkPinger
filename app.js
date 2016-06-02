@@ -13,7 +13,7 @@ io.on('connection', function(socket) {
 		pinger = setInterval(function() {
 			console.log('Send Ping request');
 			var id = Date.now();
-			records[device][id.toString()] = -1;
+			records[device][id] = -1;
 			socket.emit('ping', id);
 		}, 5000);
 	});
@@ -24,7 +24,7 @@ io.on('connection', function(socket) {
 
 	socket.on('pong', function(device, id){
 		console.log('Got Ping response');
-		records[device][id.toString()] = Date.now() - id;
+		records[device][id] = Date.now() - id;
 	});
 
 	socket.on('disconnect', function(data){
