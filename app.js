@@ -13,7 +13,7 @@ io.on('connection', function(socket) {
 		pinger = setInterval(function() {
 			console.log('Send Ping request');
 			var id = (new Date()).getTime();
-			console.log('Sent ID Type: ' + id.prototype);
+			console.log(id);
 			records[device][id] = -1;
 			socket.emit('ping', id);
 		}, 5000);
