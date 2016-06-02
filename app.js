@@ -1,4 +1,3 @@
-var http = require('http');
 var io = require('socket.io')(8080);
 
 var records = {};
@@ -27,19 +26,19 @@ io.on('connection', function(socket) {
 	socket.on('pong', function(device, id) {
 		console.log('Received id: ' + id);
 		console.log('Got Ping response');
-		records[device][parseInt(id)] = (new Date).getTime() - id;
+		var ping = (new Date).getTime() - id;
+		records[device][parseInt(id)] = ping;
 
-		console.log(records);
+		console.log('Ping: ' + ping);
 	});
 
-	socket.on('disconnect', function(data){
-		console.log('Disconnected')
+	socket.on('disconnect', function(){
+		console.log('Disconnected');
 	});
 
 	//Monitor
-
+	socket.on('request_list', function(){
+		var list = records.keys();
+		socket.emit('device_list', list);
+	});
 });
-
-http.createServer(function(req, res) {
-	if
-}).listen(3000);
