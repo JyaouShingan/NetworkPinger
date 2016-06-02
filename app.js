@@ -24,7 +24,7 @@ io.on('connection', function(socket) {
 	});
 
 	socket.on('pong', function(device, id) {
-		console.log('Received ID Type: ' + id.prototype);
+		console.log('Received id: ' + id);
 		console.log('Got Ping response');
 		records[device][parseInt(id)] = (new Date).getTime() - id;
 	});
