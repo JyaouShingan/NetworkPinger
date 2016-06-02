@@ -27,6 +27,8 @@ io.on('connection', function(socket) {
 		console.log('Received id: ' + id);
 		console.log('Got Ping response');
 		records[device][parseInt(id)] = (new Date).getTime() - id;
+
+		console.log(records);
 	});
 
 	socket.on('disconnect', function(data){
