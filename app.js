@@ -1,3 +1,4 @@
+var http = require('http');
 var io = require('socket.io')(8080);
 
 var records = {};
@@ -38,3 +39,7 @@ io.on('connection', function(socket) {
 	//Monitor
 
 });
+
+http.createServer(function(req, res) {
+	if
+}).listen(3000);
